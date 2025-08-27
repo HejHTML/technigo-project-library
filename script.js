@@ -70,7 +70,7 @@ const books = [
     rating: 4.7,
     description:
       'The first book in the beloved Harry Potter series, it introduces readers to the magical world of Hogwarts and the young wizard Harry Potter.',
-    image: "./books-images/harry-potter-and-the-sorcerer'.jpg"
+    image: "./books-images/harry-potter-and-the-sorcerer.jpg"
   },
   {
     title: 'Moby-Dick',
@@ -183,4 +183,28 @@ const books = [
     image: './books-images/unknown.jpg'
   }
 ]
+// Hitta container i HTML där böckerna ska visas
+const bookList = document.getElementById("book-list");
+
+// Loopa igenom alla böcker
+books.forEach(book => {
+  // Skapa ett div-element för varje bok
+  const bookItem = document.createElement("div");
+  bookItem.classList.add("book"); // kan styla med CSS
+
+  // Lägg in HTML med titel, författare, år och bild
+  bookItem.innerHTML = `
+    <img src="${book.image}" alt="${book.title}" />
+    <h3>${book.title}</h3>
+    <p><strong>Author:</strong> ${book.author}</p>
+    <p><strong>Year:</strong> ${book.year}</p>
+    <p><strong>Genre:</strong> ${book.genre}</p>
+    <p><strong>Rating:</strong> ${book.rating}</p>
+    <p>${book.description}</p>
+  `;
+
+  // Lägg till bok-diven i container
+  bookList.appendChild(bookItem);
+});
+
 
