@@ -1,9 +1,5 @@
-/*Here we have created two different arrays that you can work with if you want.
-If you choose to create your own arrays with elements, just make sure to create
-some properties that is possible to filter and sort.
+/*Library of books*/
 
-Remember to remove code you don't need.
-*/
 
 const books = [
   {
