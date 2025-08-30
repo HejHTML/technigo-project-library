@@ -3,16 +3,61 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#book-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Mobil: en kolumn */
+  gap: 20px;
+  justify-content: center;
+}
+
 .book {
   border: 1px solid green;
   padding: 10px;
   margin: 10px;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  border-radius: 10px;
+  background-color: #968989;
+  box-shadow: 5px 5px 10px rgb(106, 176, 106);
+  max-width: 300px;
+  text-align: center;
 }
 
 .book img {
   width: 150px;
   height: 220px;
   object-fit: cover;
+}
+
+/* iPad (portrait & landscape: 2 kolumner) */
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  #book-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .book {
+    max-width: 350px;
+    margin: 20px auto;
+  }
+
+  .book img {
+    width: 180px;
+    height: 250px;
+  }
+}
+
+/* Laptop och större skärmar: 4 kolumner */
+@media screen and (min-width: 1025px) {
+  #book-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .book {
+    max-width: 400px;
+    margin: 20px;
+  }
+
+  .book img {
+    width: 200px;
+    height: 280px;
+  }
 }

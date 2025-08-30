@@ -1,5 +1,3 @@
-/*Library of books*/
-
 
 const books = [
   {
@@ -182,29 +180,75 @@ const books = [
       'A dystopian novel set in a seemingly perfect society where young Jonas discovers the dark truth beneath the surface.',
     image: './books-images/unknown.jpg'
   }
-]
-// Hitta container i HTML där böckerna ska visas
+];
+
+// Hitta container i HTML
 const bookList = document.getElementById("book-list");
+const genreSelect = document.getElementById("genre-filter");
+const sortSelect = document.getElementById("sort-books");
+const searchInput = document.getElementById("search-bar");
+const randomBtn = document.getElementById("random-book");
 
-// Loopa igenom alla böcker
-books.forEach(book => {
-  // Skapa ett div-element för varje bok
-  const bookItem = document.createElement("div");
-  bookItem.classList.add("book"); // kan styla med CSS
+// Funktion för att visa böcker
+function displayBooks(arr) {
+  bookList.innerHTML = "";
+  arr.forEach(book => {
+    const bookItem = document.createElement("div");
+    bookItem.classList.add("book");
+    bookItem.innerHTML = `
+      <img src="${book.image}" alt="${book.title}" />
+      <h3>${book.title}</h3>
+      <p><strong>Författare:</strong> ${book.author}</p>
+      <p><strong>År:</strong> ${book.year}</p>
+      <p><strong>Genre:</strong> ${book.genre}</p>
+      <p><strong>Betyg:</strong> ${book.rating}</p>
+      <p>${book.description}</p>
+    `;
+    bookList.appendChild(bookItem);
+  });
+}
 
-  // Lägg in HTML med titel, författare, år och bild
-  bookItem.innerHTML = `
-    <img src="${book.image}" alt="${book.title}" />
-    <h3>${book.title}</h3>
-    <p><strong>Author:</strong> ${book.author}</p>
-    <p><strong>Year:</strong> ${book.year}</p>
-    <p><strong>Genre:</strong> ${book.genre}</p>
-    <p><strong>Rating:</strong> ${book.rating}</p>
-    <p>${book.description}</p>
-  `;
+// Uppdatera lista baserat på filter, sort och search
+function updateBooks() {
+  let filtered = [...books];
 
-  // Lägg till bok-diven i container
-  bookList.appendChild(bookItem);
-});
+  // Filter genre
+  const genre = genreSelect.value;
+  if (genre !== "all") filtered = filtered.filter(book => book.genre === genre);
 
+  // Search
+  const query = searchInput.value.toLowerCase();
+  if (query) {
+    filtered = filtered.filter(book =>
+      book.title.toLowerCase().includes(query) ||
+      book.author.toLowerCase().includes(query)
+    );
+  }
 
+  // Sort
+  const sortValue = sortSelect.value;
+  if (sortValue === "year-asc") filtered.sort((a, b) => a.year - b.year);
+  if (sortValue === "year-desc") filtered.sort((a, b) => b.year - a.year);
+  if (sortValue === "rating-asc") filtered.sort((a, b) => a.rating - b.rating);
+  if (sortValue === "rating-desc") filtered.sort((a, b) => b.rating - a.rating);
+  if (sortValue === "title-asc") filtered.sort((a, b) => a.title.localeCompare(b.title));
+  if (sortValue === "title-desc") filtered.sort((a, b) => b.title.localeCompare(a.title));
+
+  displayBooks(filtered);
+}
+
+// Event listeners
+genreSelect.addEventListener("change", updateBooks);
+sortSelect.addEventListener("change", updateBooks);
+searchInput.addEventListener("input", updateBooks);
+
+// Slumpbok
+if (randomBtn) {
+  randomBtn.addEventListener("click", () => {
+    const randomBook = books[Math.floor(Math.random() * books.length)];
+    displayBooks([randomBook]);
+  });
+}
+
+// Visa alla böcker initialt
+updateBooks();
