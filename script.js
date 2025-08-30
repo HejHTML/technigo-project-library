@@ -182,14 +182,14 @@ const books = [
   }
 ];
 
-// Hitta container i HTML
+// Container i HTML
 const bookList = document.getElementById("book-list");
 const genreSelect = document.getElementById("genre-filter");
 const sortSelect = document.getElementById("sort-books");
 const searchInput = document.getElementById("search-bar");
 const randomBtn = document.getElementById("random-book");
 
-// Funktion för att visa böcker
+// Funktion visa böcker
 function displayBooks(arr) {
   bookList.innerHTML = "";
   arr.forEach(book => {
@@ -225,7 +225,7 @@ function updateBooks() {
     );
   }
 
-  // Sort
+  // Sortera
   const sortValue = sortSelect.value;
   if (sortValue === "year-asc") filtered.sort((a, b) => a.year - b.year);
   if (sortValue === "year-desc") filtered.sort((a, b) => b.year - a.year);
@@ -237,7 +237,7 @@ function updateBooks() {
   displayBooks(filtered);
 }
 
-// Event listeners
+// Event listning
 genreSelect.addEventListener("change", updateBooks);
 sortSelect.addEventListener("change", updateBooks);
 searchInput.addEventListener("input", updateBooks);
@@ -262,7 +262,6 @@ if (randomBtn) {
     randomBookContainer.appendChild(bookItem);
   });
 }
-
 
 // Visa alla böcker initialt
 updateBooks();
