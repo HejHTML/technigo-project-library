@@ -1,12 +1,12 @@
 body {
-  background: rgb(105, 105, 240);
+  background: rgb(232, 216, 124);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1 {
   text-align: center;
   font-size: 50px;
-  text-shadow: 2px 2px 4px greenyellow;
+  text-shadow: 2px 2px 4px rgb(94, 97, 91);
 }
 
 #book-list {
@@ -39,7 +39,7 @@ h1 {
 }
 
 #random-book {
-  background-color: #76b706;
+  background-color: #4fa763;
   color: white;
   border: none;
   cursor: pointer;
@@ -55,8 +55,8 @@ h1 {
   padding: 10px 25px 0 25px;
   margin: 10px;
   border-radius: 10px;
-  background-color: #cb7bb3;
-  box-shadow: 5px 5px 10px rgb(120, 225, 123);
+  background-color: #76cd8a;
+  box-shadow: 5px 5px 10px rgb(29, 73, 31);
   max-width: 300px;
   text-align: center;
 }
