@@ -68,6 +68,13 @@ h1 {
   border-radius: 50%;
 }
 
+.random-book-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
 /* Padda, 2 kolumner */
 @media screen and (min-width: 600px) and (max-width: 1024px) {
   #book-list {
@@ -114,4 +121,18 @@ h1 {
     margin: 20px auto;
     padding: 10px;
   }
+
+  #random-book-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    width: 100%;
+  }
+
+  #random-book-container .book {
+    margin: 0 auto;
+
+  }
+
+
 }
