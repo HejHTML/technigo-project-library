@@ -3,12 +3,50 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+h1 {
+  text-align: center;
+  font-size: 50px;
+  text-shadow: 2px 2px 4px greenyellow;
+}
+
 #book-list {
   display: grid;
   grid-template-columns: 1fr;
-  /* Mobil: en kolumn */
   gap: 20px;
   justify-content: center;
+}
+
+.controls {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.controls select,
+.controls input,
+#random-book {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+#random-book {
+  background-color: #76b706;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#random-book:hover {
+  background-color: #0e451a;
 }
 
 .book {
@@ -16,7 +54,7 @@ body {
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
-  background-color: #968989;
+  background-color: #bb65a1;
   box-shadow: 5px 5px 10px rgb(106, 176, 106);
   max-width: 300px;
   text-align: center;
@@ -24,11 +62,13 @@ body {
 
 .book img {
   width: 150px;
-  height: 220px;
+  height: 150px;
+  margin-top: 10px;
   object-fit: cover;
+  border-radius: 50%;
 }
 
-/* iPad (portrait & landscape: 2 kolumner) */
+/* Padda, 2 kolumner */
 @media screen and (min-width: 600px) and (max-width: 1024px) {
   #book-list {
     grid-template-columns: repeat(2, 1fr);
@@ -45,7 +85,7 @@ body {
   }
 }
 
-/* Laptop och större skärmar: 4 kolumner */
+/* Dator, 4 kolumner*/
 @media screen and (min-width: 1025px) {
   #book-list {
     grid-template-columns: repeat(4, 1fr);
@@ -57,7 +97,18 @@ body {
   }
 
   .book img {
-    width: 200px;
-    height: 280px;
+    width: 150px;
+    height: 150px;
+    margin-top: 10px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .controls {
+    display: flex;
+    gap: 25px;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 10px;
   }
 }
