@@ -68,7 +68,7 @@ const books = [
     rating: 4.7,
     description:
       'The first book in the beloved Harry Potter series, it introduces readers to the magical world of Hogwarts and the young wizard Harry Potter.',
-    image: "./books-images/harry-potter-and-the-sorcerer.jpg"
+    image: './books-images/harry-potter-and-the-sorcerer.jpg'
   },
   {
     title: 'Moby-Dick',
@@ -193,7 +193,7 @@ const randomBtn = document.getElementById("random-book");
 function displayBooks(arr) {
   bookList.innerHTML = "";
   arr.forEach(book => {
-    const bookItem = document.createElement("div");
+    const bookItem = document.createElement("article");
     bookItem.classList.add("book");
     bookItem.innerHTML = `
       <img src="${book.image}" alt="${book.title}" />
@@ -242,13 +242,27 @@ genreSelect.addEventListener("change", updateBooks);
 sortSelect.addEventListener("change", updateBooks);
 searchInput.addEventListener("input", updateBooks);
 
-// Slumpbok
+const randomBookContainer = document.getElementById("random-book-container");
+
 if (randomBtn) {
   randomBtn.addEventListener("click", () => {
     const randomBook = books[Math.floor(Math.random() * books.length)];
-    displayBooks([randomBook]);
+    randomBookContainer.innerHTML = ""; // rensa tidigare
+    const bookItem = document.createElement("div");
+    bookItem.classList.add("book");
+    bookItem.innerHTML = `
+      <img src="${randomBook.image}" alt="${randomBook.title}" />
+      <h3>${randomBook.title}</h3>
+      <p><strong>Författare:</strong> ${randomBook.author}</p>
+      <p><strong>År:</strong> ${randomBook.year}</p>
+      <p><strong>Genre:</strong> ${randomBook.genre}</p>
+      <p><strong>Betyg:</strong> ${randomBook.rating}</p>
+      <p>${randomBook.description}</p>
+    `;
+    randomBookContainer.appendChild(bookItem);
   });
 }
+
 
 // Visa alla böcker initialt
 updateBooks();
