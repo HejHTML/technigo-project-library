@@ -198,9 +198,9 @@ function displayBooks(arr) {
     bookItem.innerHTML = `
       <img src="${book.image}" alt="${book.title}" />
       <h3>${book.title}</h3>
-      <p><strong>Författare:</strong> ${book.author}</p>
-      <p><strong>År:</strong> ${book.year}</p>
-      <p><strong>Genre:</strong> ${book.genre}</p>
+      <p><strong></strong> ${book.author}</p>
+      <p><strong></strong> ${book.year}</p>
+      <p><strong></strong> ${book.genre}</p>
       <p><strong>Betyg:</strong> ${book.rating}</p>
       <p>${book.description}</p>
     `;
